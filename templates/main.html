@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev search</title>
+</head>
+<body>
+    <h1>This is the main template </h1>
+    {% include 'navbar.html' %}
+
+    <!-- 全部的content（如projects.html) 會縮在這兩個block裡面 但其他元素然會被include (如footer, header)-->
+    {% block content %}
+
+    {% endblock content %}
+
+    <p> Footer </p>
+
+    
+</body>
+</html>

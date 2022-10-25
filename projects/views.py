@@ -9,6 +9,7 @@ def projects(request):
     projects = Project.objects.all()
     context = {'projects':projects}
     return render(request,'projects/projects.html', context)
+    
 
 def project(request, pk):
     projectObj = Project.objects.get(id=pk)
@@ -24,7 +25,7 @@ def createProject(request):
     context={'form':form}
 
     if request.method =='POST':
-        form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('projects')
@@ -41,7 +42,7 @@ def updateProject(request,pk):
     context={'form':form}
 
     if request.method =='POST':
-        form = ProjectForm(request.POST,instance=project)
+        form = ProjectForm(request.POST,request.FILES,instance=project)
         if form.is_valid():
             form.save()
             return redirect('projects')

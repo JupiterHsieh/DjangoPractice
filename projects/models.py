@@ -5,6 +5,9 @@ import uuid
 
 # Create your models here.
 # 在這裡 Project 和 Review 是一對多關係  Project 和Tag是多對多關係
+
+
+
 class Project(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(null=True,blank=True) #can be empty

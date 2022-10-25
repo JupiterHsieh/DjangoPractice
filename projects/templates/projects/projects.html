@@ -13,25 +13,26 @@
     <p>number is less than 10</p>
 {% endif %} -->
 
-
+<!-- 這裡就正常的html 接變數用views裡面的名字.變數就好 -->
 <hr>
 <h1>Projects</h1>
 
 <table>
     <tr>
-        <th>ID</th>
         <th>Projects</th>
         <th>Votes</th>
         <th>Positive Ratio</th>
         <th></th>
+        <th></th>
     </tr>
     {% for project in projects %}
         <tr>
-            <td> {{project.id}} </td>
             <td>{{project.title}}</td>
             <td>{{project.vote_total}}</td>
             <td>{{project.vote_ratio}}%</td>
             <td>{{project.created}}</td>
+            <td> <a href="{% url 'update-project' project.id %}"> Edit </a> </td>
+            <td> <a href="{% url 'delete-project' project.id %}">Delete </a> </td>
             <td> <a href="{% url 'project' project.id %}"> View </a> </td>
         </tr>
     {% endfor %}

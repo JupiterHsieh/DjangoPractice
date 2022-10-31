@@ -2,6 +2,7 @@ from email.policy import default
 from unittest.util import _MAX_LENGTH
 from django.db import models
 import uuid
+from users.models import Profile
 
 # Create your models here.
 # 在這裡 Project 和 Review 是一對多關係  Project 和Tag是多對多關係
@@ -9,6 +10,7 @@ import uuid
 
 
 class Project(models.Model):
+    owner = models.ForeignKey(Profile,null=True,blank=True,on_delete=models.SET_NULL)
     title = models.CharField(max_length = 200)
     description = models.TextField(null=True,blank=True) #can be empty
     featured_image = models.ImageField(null=True,blank=True,default="default.jpg")

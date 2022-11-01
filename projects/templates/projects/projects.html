@@ -2,18 +2,7 @@
 
 
 {% block content %}
-<!-- 
-<h1> Hello, you are on the {{page}} page</h1>
 
-{% if number > 10 %}
-    <p> number is greater than 10</p>
-{% elif number == 10%}
-    <p>number is exactly 10</p>
-{% else %}
-    <p>number is less than 10</p>
-{% endif %} -->
-
-<!-- 這裡就正常的html 接變數用views裡面的名字.變數就好 -->
 <hr>
 
 
@@ -51,7 +40,7 @@
                 <img class="project__thumbnail" src="{{project.featured_image.url}}" alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{project.title}}</h3>
-                  <p><a class="project__author" href="{% url 'project' project.id %}">By {{project.owner.name}}</a></p>
+                  <p><a class="project__author" href="{% url 'user-profile' project.owner.id %}">By {{project.owner.name}}</a></p>
                   <p class="project--rating">
                     <span style="font-weight: bold;">{{project.vote_ratio}}</span> Postitive
                     Feedback ({{project.vote_total}} Vote{{project.vote_total|pluralize:"s"}})

@@ -22,6 +22,14 @@
 <body>
     {% include 'navbar.html' %}
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 
     <!-- 全部的content（如projects.html) 會縮在這兩個block裡面 但其他元素然會被include (如footer, header)-->
     {% block content %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Project
 from .forms import ProjectForm
+from django.contrib.auth.decorators import login_required
 
 # views 裡面的所有內容 都會導航(render)到相對印的html黨 而後面的context 是傳道html黨的內容 (用python字典傳)
 
@@ -20,6 +21,7 @@ def project(request, pk):
 
 
 #if else 操作也是寫在view裡面
+@login_required(login_url="login")
 def createProject(request):
     form = ProjectForm()
     context={'form':form}
@@ -34,7 +36,7 @@ def createProject(request):
 
 
 #if else 操作也是寫在view裡面
-
+@login_required(login_url="login")
 def updateProject(request,pk):
 
     project = Project.objects.get(id=pk)
@@ -51,6 +53,7 @@ def updateProject(request,pk):
 
 
 #if else 操作也是寫在view裡面
+@login_required(login_url="login")
 def deleteProject(request,pk):
     project = Project.objects.get(id=pk)
 
